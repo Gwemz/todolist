@@ -2,14 +2,15 @@
  * Created by 国外噩梦 on 2016/10/12.
  */
 $(function(){
-    var add=$('.add .icon-tianjia');
+    var add=$('.add');
     var del=$('.icon-del');
     var del1=$('.icon-del1');
-    var fuxuan=$('.icon-fuxuankuang');
+
     add.on('click',function(e,v){
-        $('<li><i class="icon-font icon-fuxuankuang"></i><p>'+Math.random()+'</p><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
+        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text"><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
     })
 
+    var fuxuan=$('.icon-fuxuankuang');
     //点击复选框选中相应元素
     fuxuan.on('click',function(){
         $(this).toggleClass('icon-fuxuankuang1');
@@ -18,13 +19,12 @@ $(function(){
             .toggleClass('icon-del1')
             .on('click',function(){
                 $(this).closest('li')
-                    .css('transform','scale(0,0)')
-                    .delay(500)
-                    .queue(function(){
-                        $(this).remove()
-                            .dequeue();
-                    });
-
+                .css('transform','scale(0,0)')
+                .delay(500)
+                .queue(function(){
+                    $(this).remove()
+                        .dequeue();
+                });
             });
     })
     var left=null;
@@ -46,6 +46,11 @@ $(function(){
                     .dequeue();
             });
         }
+    })
+    var edit=$('.edit');
+    edit.on('click',function(){
+        $('.list').find('.icon-font').toggleClass('icon-fuxuankuang1');
+        $('.list').find('.icon-del').toggleClass('icon-del1');
     })
 
 
