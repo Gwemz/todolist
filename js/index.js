@@ -5,28 +5,50 @@ $(function(){
     var add=$('.add');
     var del=$('.icon-del');
     var del1=$('.icon-del1');
+    var todos=[];
+    var fuxuan=$('.icon-fuxuankuang');
+
+    if(localStorage.table){
+        todos=JSON.parse(localStorage.table);
+    }else{
+        localStorage.table=JSON.stringify(todos);
+    }
 
     add.on('click',function(e,v){
-        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text"><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
+        todos.push({state:1,isDel:0});
+        localStorage.table=JSON.stringify(todos);
+        console.log(todos);
+        console.log(localStorage.table);
+        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" autofocus></textarea><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
     })
 
-    var fuxuan=$('.icon-fuxuankuang');
-    //点击复选框选中相应元素
-    fuxuan.on('click',function(){
-        $(this).toggleClass('icon-fuxuankuang1');
-        var index=$(this).closest("li").index();
-        $(this).closest("li").find('.del')
+    //点击复选框时红叉出现,并给其上加上事件
+    $('.list').on('click','.icon-fuxuankuang',function(){
+        $(this).toggleClass('icon-fuxuankuang1')
+            .closest('li').find('.del')
             .toggleClass('icon-del1')
             .on('click',function(){
                 $(this).closest('li')
-                .css('transform','scale(0,0)')
-                .delay(500)
-                .queue(function(){
-                    $(this).remove()
-                        .dequeue();
-                });
+                    .css('transform','scale(0,0)')
+                    .delay(500)
+                    .queue(function(){
+                        $(this).remove()
+                            .dequeue();
+                    });
             });
     })
+    //点击红叉删除对应的Li
+    $('.list').on('click','.icon-del1',function(){
+        $(this).closest('li')
+            .css('transform','scale(0,0)')
+            .delay(500)
+            .queue(function(){
+                $(this).remove()
+                    .dequeue();
+            });
+    })
+
+
     var left=null;
     //当触摸事件开始的时候记录left的值
     $('.list').on('touchstart','li',function(e){
@@ -39,6 +61,8 @@ $(function(){
         var x=move_left-left;
         //当触摸结束位置-初始位置大于某一个值的时候,li移动到对应的那个值延迟800ms之后又返回
         if(x>40&&move_left>0){
+            $(this).find('.icon-fuxuankuang').addClass('icon-fuxuankuang1');
+            $(this).find('.icon-del').addClass('icon-del1');
             $(this).css('transform','translate3d('+x+'px,0,0)')
             .delay(800)
             .queue(function(){
@@ -47,11 +71,14 @@ $(function(){
             });
         }
     })
+    //点击编辑选项删除所选中的任务栏
     var edit=$('.edit');
     edit.on('click',function(){
-        $('.list').find('.icon-font').toggleClass('icon-fuxuankuang1');
+        $('.list').find('.icon-fuxuankuang').toggleClass('icon-fuxuankuang1');
         $('.list').find('.icon-del').toggleClass('icon-del1');
     })
+
+    //点击添加任务,显示文本编辑框,文本输入完成后,点击确定(对勾)生成li插入到ul后
 
 
 })

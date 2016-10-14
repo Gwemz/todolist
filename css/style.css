@@ -95,7 +95,7 @@ body {
   background: linear-gradient(90deg, #71ae8c 10%, #f9e3a7);
 }
 
-ul, li, h1, h2, h3, h4, h5, h6, p, textarea {
+ul, li, h1, h2, h3, h4, h5, h6, p, input, textarea {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -187,7 +187,7 @@ i {
   height: 1.32rem;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.8);
-  transition: transform 1s ease .1s;
+  transition: transform .8s ease 0s;
   /*box-shadow: 0px 5px 5px #fff;*/
   margin-bottom: 0.1rem;
 }
@@ -205,6 +205,7 @@ i {
 
 .container .list li p, .container .list li input {
   float: left;
+  font-family: "微软雅黑";
   margin-left: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.3rem;
@@ -248,8 +249,8 @@ i {
 }
 
 .textarea {
-  width: 6rem;
-  height: 6rem;
+  width: 0rem;
+  height: 0rem;
   border-radius: 0.15rem;
   background-color: rgba(255, 255, 255, 0.8);
   position: absolute;
@@ -258,6 +259,7 @@ i {
   right: 0;
   bottom: 0;
   margin: auto;
+  transition: transform 1s ease 0s;
 }
 
 .textarea textarea {
