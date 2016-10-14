@@ -1,0 +1,198 @@
+@mixin useRem($desigin-size) {
+  $device-size-list: $desigin-size, 414px, 412px, 380px, 375px, 360px, 320px;
+  @each $size in $device-size-list {
+    @media screen and (max-width: #{$size}) {
+      html {
+        font-size: 100px*$size/$desigin-size;
+      }
+    }
+  }
+}
+
+@include useRem(1080px);
+
+@font-face {
+  font-family: "icon-font";
+  src: url("../fonts/iconfont.woff");
+}
+
+@font-face {
+  font-family: "del";
+  src: url("../fonts/del.woff");
+}
+
+.del {
+  font-family: "del";
+}
+
+.icon-del:before {
+  content: "\f006a";
+}
+
+.icon-font {
+  font-family: "icon-font";
+}
+
+.icon-fanhui:before {
+  content: "\e604";
+}
+
+.icon-tianjia:before {
+  content: "\e607";
+}
+
+.icon-shoucang:before {
+  content: "\e647";
+}
+
+.icon-shoucang1:before {
+  content: "\e64d";
+}
+
+.icon-fuxuankuang:before {
+  content: "\e68a";
+}
+
+.icon-fuxuankuang1:before {
+  content: "\e643";
+}
+
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  font-family: "微软雅黑";
+  background: linear-gradient(90deg, #71ae8c 10%, #f9e3a7);
+}
+
+ul, li, h1, h2, h3, h4, h5, h6, p {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+i {
+  font-style: normal;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1.45rem;
+  background-color: rgba(113, 174, 140, .8);
+  color: #fff;
+  line-height: 1.45rem;
+  text-align: center;
+  .content {
+    width: 10.36rem;
+    margin: 0 auto;
+    position: relative;
+    h2 {
+      font-size: 0.5rem;
+    }
+    i {
+      width: 0.5rem;
+      height: 0.5rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    span {
+      font-size: 0.45rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+}
+
+.container {
+  width: 10.36rem;
+  margin: 1.45rem auto 0;
+  padding-top: 0.2rem;
+  overflow: hidden;
+  .add {
+    width: 100%;
+    height: 0.92rem;
+    line-height: 0.92rem;
+    padding: 0.25rem 0;
+    margin-bottom: 0.2rem;
+    color: #fff;
+    font-size: 0.5rem;
+    background: linear-gradient(90deg, #79b694, #8fbc92);
+    border-radius: 5px;
+    .icon-tianjia {
+      float: left;
+      margin-left: 0.4rem;
+    }
+    span {
+      float: left;
+    }
+    .icon-del{
+      float: right;
+      margin-right: 0.4rem;
+    }
+  }
+  .list li {
+    display: block;
+    width: 100%;
+    height: 1.32rem;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, .8);
+    transition: transform 1s ease .1s;
+    /*box-shadow: 0px 5px 5px #fff;*/
+    margin-bottom: 0.1rem;
+    i.icon-fuxuankuang, i.icon-fuxuankuang1 {
+      float: left;
+      margin-top: 0.5rem;
+      margin-left: 0.5rem;
+      color: #ccc;
+    }
+    i.icon-fuxuankuang1 {
+      color: #3891DC;
+    }
+    p {
+      float: left;
+      margin-left: 0.5rem;
+      margin-top: 0.5rem;
+      font-size:0.3rem;
+    }
+    img {
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      float: right;
+      margin-right: 0.5rem;
+      margin-top: 0.1rem;
+    }
+    i.icon-del{
+      float: right;
+      margin-top: 0.5rem;
+      margin-right: 0.5rem;
+      color: #ccc;
+    }
+    i.icon-del1 {
+      color: #DB4C3E;
+    }
+  }
+  .added {
+    width: 4.82rem;
+    height: 0.77rem;
+    border-radius: 5px;
+    background-color: #7DB590;
+    margin: 0.44rem auto;
+    //box-shadow: 0px 1px 30px #000;
+    color: #fff;
+    font-size: 0.28rem;
+    text-align: center;
+    line-height: 0.77rem;
+  }
+}
