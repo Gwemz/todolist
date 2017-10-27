@@ -1,5 +1,6 @@
+@charset "UTF-8";
 @mixin useRem($desigin-size) {
-  $device-size-list: $desigin-size, 414px, 412px, 380px, 375px, 360px, 320px;
+  $device-size-list: 1920px,1280px,$desigin-size, 414px, 412px, 380px, 375px, 360px, 320px;
   @each $size in $device-size-list {
     @media screen and (max-width: #{$size}) {
       html {

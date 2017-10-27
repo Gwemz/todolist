@@ -1,114 +1,82 @@
 @charset "UTF-8";
+@media screen and (max-width: 1920px) {
+  html {
+    font-size: 177.7777777778px; } }
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 118.5185185185px; } }
 @media screen and (max-width: 1080px) {
   html {
-    font-size: 100px;
-  }
-}
-
+    font-size: 100px; } }
 @media screen and (max-width: 414px) {
   html {
-    font-size: 38.33333px;
-  }
-}
-
+    font-size: 38.3333333333px; } }
 @media screen and (max-width: 412px) {
   html {
-    font-size: 38.14815px;
-  }
-}
-
+    font-size: 38.1481481481px; } }
 @media screen and (max-width: 380px) {
   html {
-    font-size: 35.18519px;
-  }
-}
-
+    font-size: 35.1851851852px; } }
 @media screen and (max-width: 375px) {
   html {
-    font-size: 34.72222px;
-  }
-}
-
+    font-size: 34.7222222222px; } }
 @media screen and (max-width: 360px) {
   html {
-    font-size: 33.33333px;
-  }
-}
-
+    font-size: 33.3333333333px; } }
 @media screen and (max-width: 320px) {
   html {
-    font-size: 29.62963px;
-  }
-}
-
+    font-size: 29.6296296296px; } }
 @font-face {
   font-family: "icon-font";
-  src: url("../fonts/iconfont.woff");
-}
-
+  src: url("../fonts/iconfont.woff"); }
 @font-face {
   font-family: "del";
-  src: url("../fonts/del.woff");
-}
-
+  src: url("../fonts/del.woff"); }
 .del {
-  font-family: "del";
-}
+  font-family: "del"; }
 
 .icon-del:before {
-  content: "\f006a";
-}
+  content: "\f006a"; }
 
 .icon-font {
-  font-family: "icon-font";
-}
+  font-family: "icon-font"; }
 
 .icon-fanhui:before {
-  content: "\e604";
-}
+  content: "\e604"; }
 
 .icon-tianjia:before {
-  content: "\e607";
-}
+  content: "\e607"; }
 
 .icon-shoucang:before {
-  content: "\e647";
-}
+  content: "\e647"; }
 
 .icon-shoucang1:before {
-  content: "\e64d";
-}
+  content: "\e64d"; }
 
 .icon-fuxuankuang:before {
-  content: "\e68a";
-}
+  content: "\e68a"; }
 
 .icon-fuxuankuang1:before {
-  content: "\e643";
-}
+  content: "\e643"; }
 
 body {
   font-size: 16px;
   margin: 0;
   padding: 0;
   font-family: "微软雅黑";
-  background: linear-gradient(90deg, #71ae8c 10%, #f9e3a7);
-}
+  background: linear-gradient(90deg, #71ae8c 10%, #f9e3a7); }
 
 ul, li, h1, h2, h3, h4, h5, h6, p, input, textarea {
   list-style: none;
   padding: 0;
-  margin: 0;
-}
+  margin: 0; }
 
 i {
-  font-style: normal;
-}
+  font-style: normal; }
 
 .bg {
   width: 100%;
-  height: 100%;
-}
+  height: 100%; }
 
 .header {
   position: fixed;
@@ -119,134 +87,98 @@ i {
   background-color: rgba(113, 174, 140, 0.8);
   color: #fff;
   line-height: 1.45rem;
-  text-align: center;
-}
-
-.header .content {
-  width: 10.36rem;
-  margin: 0 auto;
-  position: relative;
-}
-
-.header .content h2 {
-  font-size: 0.5rem;
-}
-
-.header .content i {
-  width: 0.5rem;
-  height: 0.5rem;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.header .content span {
-  font-size: 0.45rem;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 0.5rem;
-}
+  text-align: center; }
+  .header .content {
+    width: 10.36rem;
+    margin: 0 auto;
+    position: relative; }
+    .header .content h2 {
+      font-size: 0.5rem; }
+    .header .content i {
+      width: 0.5rem;
+      height: 0.5rem;
+      position: absolute;
+      left: 0;
+      top: 0; }
+    .header .content span {
+      font-size: 0.45rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0 0.5rem; }
 
 .container {
   width: 10.36rem;
   margin: 1.45rem auto 0;
   padding-top: 0.2rem;
-  overflow: hidden;
-}
-
-.container .add {
-  width: 100%;
-  height: 0.92rem;
-  line-height: 0.92rem;
-  padding: 0.25rem 0;
-  margin-bottom: 0.2rem;
-  color: #fff;
-  font-size: 0.5rem;
-  background: linear-gradient(90deg, #79b694, #8fbc92);
-  border-radius: 5px;
-}
-
-.container .add .icon-tianjia {
-  float: left;
-  margin-left: 0.4rem;
-}
-
-.container .add span {
-  float: left;
-}
-
-.container .add .icon-del {
-  float: right;
-  margin-right: 0.4rem;
-}
-
-.container .list li {
-  display: block;
-  width: 100%;
-  height: 1.32rem;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.8);
-  transition: transform .8s ease 0s;
-  /*box-shadow: 0px 5px 5px #fff;*/
-  margin-bottom: 0.1rem;
-}
-
-.container .list li i.icon-fuxuankuang, .container .list li i.icon-fuxuankuang1 {
-  float: left;
-  margin-top: 0.5rem;
-  margin-left: 0.5rem;
-  color: #ccc;
-}
-
-.container .list li i.icon-fuxuankuang1 {
-  color: #3891DC;
-}
-
-.container .list li p, .container .list li input {
-  float: left;
-  font-family: "微软雅黑";
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.3rem;
-}
-
-.container .list li input {
-  border: 0;
-  background-color: transparent;
-}
-
-.container .list li img {
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 50%;
-  float: right;
-  margin-right: 0.5rem;
-  margin-top: 0.1rem;
-}
-
-.container .list li i.icon-del {
-  float: right;
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
-  color: #ccc;
-}
-
-.container .list li i.icon-del1 {
-  color: #DB4C3E;
-}
-
-.container .added {
-  width: 4.82rem;
-  height: 0.77rem;
-  border-radius: 5px;
-  background-color: #7DB590;
-  margin: 0.44rem auto;
-  color: #fff;
-  font-size: 0.28rem;
-  text-align: center;
-  line-height: 0.77rem;
-}
+  overflow: hidden; }
+  .container .add {
+    width: 100%;
+    height: 0.92rem;
+    line-height: 0.92rem;
+    padding: 0.25rem 0;
+    margin-bottom: 0.2rem;
+    color: #fff;
+    font-size: 0.5rem;
+    background: linear-gradient(90deg, #79b694, #8fbc92);
+    border-radius: 5px; }
+    .container .add .icon-tianjia {
+      float: left;
+      margin-left: 0.4rem; }
+    .container .add span {
+      float: left; }
+    .container .add .icon-del {
+      float: right;
+      margin-right: 0.4rem; }
+  .container .list li {
+    display: block;
+    width: 100%;
+    height: 1.32rem;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: transform .8s ease 0s;
+    /*box-shadow: 0px 5px 5px #fff;*/
+    margin-bottom: 0.1rem; }
+    .container .list li i.icon-fuxuankuang, .container .list li i.icon-fuxuankuang1 {
+      float: left;
+      margin-top: 0.5rem;
+      margin-left: 0.5rem;
+      color: #ccc; }
+    .container .list li i.icon-fuxuankuang1 {
+      color: #3891DC; }
+    .container .list li p, .container .list li input {
+      float: left;
+      font-family: "微软雅黑";
+      margin-left: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.3rem; }
+    .container .list li input {
+      border: 0;
+      background-color: transparent; }
+    .container .list li img {
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      float: right;
+      margin-right: 0.5rem;
+      margin-top: 0.1rem; }
+    .container .list li i.icon-del {
+      float: right;
+      margin-top: 0.5rem;
+      margin-right: 0.5rem;
+      color: #ccc; }
+    .container .list li i.icon-del1 {
+      color: #DB4C3E; }
+  .container .added {
+    width: 4.82rem;
+    height: 0.77rem;
+    border-radius: 5px;
+    background-color: #7DB590;
+    margin: 0.44rem auto;
+    color: #fff;
+    font-size: 0.28rem;
+    text-align: center;
+    line-height: 0.77rem; }
 
 .textarea {
   width: 0rem;
@@ -259,14 +191,13 @@ i {
   right: 0;
   bottom: 0;
   margin: auto;
-  transition: transform 1s ease 0s;
-}
+  transition: transform 1s ease 0s; }
+  .textarea textarea {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    line-height: 0.5rem;
+    background-color: transparent;
+    font-size: 0.3rem; }
 
-.textarea textarea {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  line-height: 0.5rem;
-  background-color: transparent;
-  font-size: 0.3rem;
-}
+/*# sourceMappingURL=style.css.map */

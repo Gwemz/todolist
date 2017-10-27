@@ -14,15 +14,33 @@ $(function(){
         localStorage.table=JSON.stringify(todos);
     }
 
+    /*------------------------遍历数据(20171027)--------------------------*/
+    var data = [{"val":"todo1","imgSrc":"renwu.jpg"},{"val":"todo2","imgSrc":"renwu.jpg"},{"val":"todo3","imgSrc":"renwu.jpg"},{"val":"todo4","imgSrc":"renwu.jpg"},{"val":"todo5","imgSrc":"renwu.jpg"}];
+
+    function render(i,data){
+        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" value="'+data[i].val+'"><i class="del icon-del"></i><img src="imgs/'+data[i].imgSrc+'" alt="加载失败"></li>').appendTo('.list');
+    }
+    for(var i=0;i<data.length;i++){
+        render(i,data);
+    }
+    /*--------------------------------------------------------------------*/
+    //修改任务
+    function upload(){
+        var val = $(this).val();
+        console.log(val);
+    }
+    //添加任务
     add.on('click',function(e,v){
-        todos.push({state:1,isDel:0});
+        /*todos.push({state:1,isDel:0});
         localStorage.table=JSON.stringify(todos);
         console.log(todos);
-        console.log(localStorage.table);
-        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" autofocus></textarea><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
+        console.log(localStorage.table);*/
+        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" onblur="upload()" autofocus ></textarea><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
     })
 
-    //点击复选框时红叉出现,并给其上加上事件
+
+
+    //选中相应任务
     $('.list').on('click','.icon-fuxuankuang',function(){
         $(this).toggleClass('icon-fuxuankuang1')
             .closest('li').find('.del')
@@ -37,7 +55,7 @@ $(function(){
                     });
             });
     })
-    //点击红叉删除对应的Li
+    //删除任务
     $('.list').on('click','.icon-del1',function(){
         $(this).closest('li')
             .css('transform','scale(0,0)')
@@ -47,7 +65,6 @@ $(function(){
                     .dequeue();
             });
     })
-
 
     var left=null;
     //当触摸事件开始的时候记录left的值
