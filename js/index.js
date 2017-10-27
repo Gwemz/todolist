@@ -8,37 +8,21 @@ $(function(){
     var todos=[];
     var fuxuan=$('.icon-fuxuankuang');
 
+    /*------------------------遍历数据(20171027)--------------------------*/
+    var data = [{"val":"todo1","imgSrc":"renwu.jpg"},{"val":"todo2","imgSrc":"renwu.jpg"},{"val":"todo3","imgSrc":"renwu.jpg"},{"val":"todo4","imgSrc":"renwu.jpg"},{"val":"todo5","imgSrc":"renwu.jpg"}];
+    // localStorage.table = JSON.stringify(data);
     if(localStorage.table){
         todos=JSON.parse(localStorage.table);
     }else{
-        localStorage.table=JSON.stringify(todos);
+        localStorage.table=JSON.stringify(data);
     }
-
-    /*------------------------遍历数据(20171027)--------------------------*/
-    var data = [{"val":"todo1","imgSrc":"renwu.jpg"},{"val":"todo2","imgSrc":"renwu.jpg"},{"val":"todo3","imgSrc":"renwu.jpg"},{"val":"todo4","imgSrc":"renwu.jpg"},{"val":"todo5","imgSrc":"renwu.jpg"}];
-
     function render(i,data){
         $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" value="'+data[i].val+'"><i class="del icon-del"></i><img src="imgs/'+data[i].imgSrc+'" alt="加载失败"></li>').appendTo('.list');
     }
-    for(var i=0;i<data.length;i++){
-        render(i,data);
+    for(var i=0;i<todos.length;i++){
+        render(i,todos);
     }
     /*--------------------------------------------------------------------*/
-    //修改任务
-    function upload(){
-        var val = $(this).val();
-        console.log(val);
-    }
-    //添加任务
-    add.on('click',function(e,v){
-        /*todos.push({state:1,isDel:0});
-        localStorage.table=JSON.stringify(todos);
-        console.log(todos);
-        console.log(localStorage.table);*/
-        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" onblur="upload()" autofocus ></textarea><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
-    })
-
-
 
     //选中相应任务
     $('.list').on('click','.icon-fuxuankuang',function(){
@@ -97,5 +81,19 @@ $(function(){
 
     //点击添加任务,显示文本编辑框,文本输入完成后,点击确定(对勾)生成li插入到ul后
 
-
+    //修改任务
+    $('.list li input').on('blur',function () {
+        var val = $(this).val();
+        todos.push({
+            val:val,
+            imgSrc:'renwu.jpg'
+        })
+        //转为json格式
+        localStorage.table=JSON.stringify(todos);
+        console.log(todos,localStorage.table);
+    })
+    //添加任务
+    add.on('click',function(e,v){
+        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" autofocus ></textarea><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
+    })
 })
