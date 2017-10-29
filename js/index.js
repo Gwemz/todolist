@@ -9,21 +9,20 @@ $(function(){
     var fuxuan=$('.icon-fuxuankuang');
 
     /*------------------------遍历数据(20171027)--------------------------*/
-    var data = [{"val":"todo1","imgSrc":"renwu.jpg"},{"val":"todo2","imgSrc":"renwu.jpg"},{"val":"todo3","imgSrc":"renwu.jpg"},{"val":"todo4","imgSrc":"renwu.jpg"},{"val":"todo5","imgSrc":"renwu.jpg"}];
+    var data = [{"val":"任务一","imgSrc":"renwu.jpg"},{"val":"任务二","imgSrc":"renwu.jpg"},{"val":"任务三","imgSrc":"renwu.jpg"},{"val":"任务四","imgSrc":"renwu.jpg"},{"val":"任务五","imgSrc":"renwu.jpg"}];
     // localStorage.table = JSON.stringify(data);
     if(localStorage.table){
         todos=JSON.parse(localStorage.table);
     }else{
         localStorage.table=JSON.stringify(data);
+        todos = localStorage.table;
     }
-    function render(i,data){
-        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" value="'+data[i].val+'"><i class="del icon-del"></i><img src="imgs/'+data[i].imgSrc+'" alt="加载失败"></li>').appendTo('.list');
+    function render(i,v){
+        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" value="'+v.val+'"><i class="del icon-del"></i><img src="imgs/'+v.imgSrc+'" alt="加载失败"></li>').appendTo('.list');
     }
-    for(var i=0;i<todos.length;i++){
-        render(i,todos);
-    }
-    /*--------------------------------------------------------------------*/
-
+    $.each(todos,function(i,v){
+        render(i,v);
+    })
     //选中相应任务
     $('.list').on('click','.icon-fuxuankuang',function(){
         $(this).toggleClass('icon-fuxuankuang1')
@@ -40,7 +39,7 @@ $(function(){
             });
     })
     //删除任务
-    $('.list').on('click','.icon-del1',function(){
+    /*$('.list').on('click','.icon-del1',function(){
         $(this).closest('li')
             .css('transform','scale(0,0)')
             .delay(500)
@@ -48,8 +47,11 @@ $(function(){
                 $(this).remove()
                     .dequeue();
             });
+    })*/
+    // 删除选中任务
+    $('.list').on('click','.icon-del1',function(){
+        $(this).closest('li').css('transform','scale(0,0)')
     })
-
     var left=null;
     //当触摸事件开始的时候记录left的值
     $('.list').on('touchstart','li',function(e){
