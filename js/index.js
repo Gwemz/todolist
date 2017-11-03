@@ -17,8 +17,14 @@ $(function(){
         localStorage.table=JSON.stringify(data);
         todos = localStorage.table;
     }
+
+    //修改任务
+    function edit(i) {
+        console.log(i);
+    }
+    
     function render(i,v){
-        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" value="'+v.val+'"><i class="del icon-del"></i><img src="imgs/'+v.imgSrc+'" alt="加载失败"></li>').appendTo('.list');
+        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" value="'+v.val+'" onblur="'+edit(i)+'"><i class="del icon-del"></i><img src="imgs/'+v.imgSrc+'" alt="加载失败"></li>').appendTo('.list');
     }
     $.each(todos,function(i,v){
         render(i,v);
@@ -85,14 +91,13 @@ $(function(){
 
     //添加任务
     function aa(){
-        /*var val = $('.list1 li:last').find('input').val();
-        console.log($('.list1 li:last'));
+        var val = $('.list1 li:last').find('input').val();
         todos.push({
             val:val,
             imgSrc:'renwu.jpg'
         })
         //转为json格式
-        localStorage.table=JSON.stringify(todos);*/
+        localStorage.table=JSON.stringify(todos);
         console.log('2');
     }
 
