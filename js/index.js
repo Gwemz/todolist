@@ -38,16 +38,6 @@ $(function(){
                     });
             });*/
     })
-    //删除任务
-    /*$('.list').on('click','.icon-del1',function(){
-        $(this).closest('li')
-            .css('transform','scale(0,0)')
-            .delay(500)
-            .queue(function(){
-                $(this).remove()
-                    .dequeue();
-            });
-    })*/
     // 删除选中任务
     $('.list').on('click','.icon-del1',function(){
         $(this).closest('li')
@@ -56,9 +46,12 @@ $(function(){
                 $(this).remove()
                     .dequeue();
             })
-        var index = $(this).index();
-        console.log(index);
+        var index = $(this).parent().index();
+        todos.splice(index,1);
+        localStorage.table = JSON.stringify(todos);
     })
+
+    //滑动选中
     var left=null;
     //当触摸事件开始的时候记录left的值
     $('.list').on('touchstart','li',function(e){
@@ -90,22 +83,27 @@ $(function(){
 
     //点击添加任务,显示文本编辑框,文本输入完成后,点击确定(对勾)生成li插入到ul后
 
-    //修改任务
-    $('.list li input').on('blur',function () {
-        var val = $(this).val();
+    //添加任务
+    function aa(){
+        /*var val = $('.list1 li:last').find('input').val();
+        console.log($('.list1 li:last'));
         todos.push({
             val:val,
             imgSrc:'renwu.jpg'
         })
         //转为json格式
-        localStorage.table=JSON.stringify(todos);
-        console.log(todos,localStorage.table);
-    })
+        localStorage.table=JSON.stringify(todos);*/
+        console.log('2');
+    }
+
     //添加任务
     add.on('click',function(e,v){
-        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" autofocus ></textarea><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
+        $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" autofocus onblur="'+aa()+'"> </textarea><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
     })
 
+    /*$('.list li input').on('blur',function () {
+
+    })*/
 
 
 })
