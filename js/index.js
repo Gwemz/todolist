@@ -1,5 +1,5 @@
 /**
- * Created by 国外噩梦 on 2016/10/12.
+ * Created by winter on 2016/10/12.
  */
 $(function(){
     var add=$('.add');
@@ -28,7 +28,7 @@ $(function(){
         $(this).toggleClass('icon-fuxuankuang1')
             .closest('li').find('.del')
             .toggleClass('icon-del1')
-            .on('click',function(){
+            /*.on('click',function(){
                 $(this).closest('li')
                     .css('transform','scale(0,0)')
                     .delay(500)
@@ -36,7 +36,7 @@ $(function(){
                         $(this).remove()
                             .dequeue();
                     });
-            });
+            });*/
     })
     //删除任务
     /*$('.list').on('click','.icon-del1',function(){
@@ -50,7 +50,14 @@ $(function(){
     })*/
     // 删除选中任务
     $('.list').on('click','.icon-del1',function(){
-        $(this).closest('li').css('transform','scale(0,0)')
+        $(this).closest('li')
+            .animate({width:'0',height:'0'})
+            .queue(function () {
+                $(this).remove()
+                    .dequeue();
+            })
+        var index = $(this).index();
+        console.log(index);
     })
     var left=null;
     //当触摸事件开始的时候记录left的值
@@ -63,7 +70,7 @@ $(function(){
         var move_left=e.originalEvent.changedTouches[0].pageX;
         var x=move_left-left;
         //当触摸结束位置-初始位置大于某一个值的时候,li移动到对应的那个值延迟800ms之后又返回
-        if(x>40&&move_left>0){
+        if((x>40&&move_left>0) || (x<-40&&move_left>0) ){
             $(this).find('.icon-fuxuankuang').addClass('icon-fuxuankuang1');
             $(this).find('.icon-del').addClass('icon-del1');
             $(this).css('transform','translate3d('+x+'px,0,0)')
@@ -98,4 +105,7 @@ $(function(){
     add.on('click',function(e,v){
         $('<li><i class="icon-font icon-fuxuankuang"></i><input type="text" autofocus ></textarea><i class="del icon-del"></i><img src="./imgs/renwu.jpg" alt="加载失败"></li>').appendTo('.list1');
     })
+
+
+
 })
